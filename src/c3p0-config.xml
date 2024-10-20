@@ -1,0 +1,28 @@
+<c3p0-config>
+  
+
+  <!-- hello，自定义数据源设置 -->
+  <named-config name="hello"> 
+	<property name="driverClass">com.mysql.cj.jdbc.Driver</property>
+	<property name="jdbcUrl">jdbc:mysql://localhost:3306/mhl?rewriteBatchedStatements=true</property>
+	<property name="user">root</property>
+	<property name="password">TY8qianOP</property>
+    <property name="acquireIncrement">5</property>
+    <property name="initialPoolSize">10</property>
+    <property name="minPoolSize">5</property>
+    <property name="maxPoolSize">50</property>
+
+    <!-- intergalactoApp adopts a different approach to configuring statement caching -->
+    <property name="maxStatements">0</property> 
+    <property name="maxStatementsPerConnection">5</property>
+
+    <!-- he's important, but there's only one of him -->
+    <user-overrides user="master-of-the-universe"> 
+      <property name="acquireIncrement">1</property>
+      <property name="initialPoolSize">1</property>
+      <property name="minPoolSize">1</property>
+      <property name="maxPoolSize">5</property>
+      <property name="maxStatementsPerConnection">50</property>
+    </user-overrides>
+  </named-config>
+</c3p0-config>
